@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <main class="container">
+    <h1 class="title">Password Generator</h1>
+
+    <section class="card">
+      <!-- 输出框 + 复制按钮 -->
+      <div class="output-row">
+        <input id="passwordOutput" type="text" class="output" placeholder="Click Generate..." readonly />
+        <button id="copyBtn" class="icon-btn" aria-label="Copy to clipboard" title="Copy">
+          <!-- 复制小图标（SVG） -->
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path fill="currentColor"
+              d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/>
+          </svg>
+        </button>
+        <span id="copyTip" class="tip" role="status" aria-live="polite"></span>
+      </div>
+
+      <!-- 控件区 -->
+      <div class="controls">
+        <label class="row">
+          <span>Length</span>
+          <div class="len">
+            <input id="lengthRange" type="range" min="4" max="32" value="12" />
+            <input id="lengthNumber" type="number" min="4" max="32" value="12" />
+          </div>
+        </label>
+
+        <label class="row"><span>Include Uppercase (A-Z)</span>
+          <input id="optUpper" type="checkbox" checked />
+        </label>
+        <label class="row"><span>Include Lowercase (a-z)</span>
+          <input id="optLower" type="checkbox" checked />
+        </label>
+        <label class="row"><span>Include Numbers (0-9)</span>
+          <input id="optNumber" type="checkbox" checked />
+        </label>
+        <label class="row"><span>Include Symbols (!@#$…)</span>
+          <input id="optSymbol" type="checkbox" />
+        </label>
+      </div>
+
+      <!-- 生成按钮（左侧钥匙图标 + 渐变背景） -->
+      <button id="genBtn" class="gen-btn">
+        <span class="key-ico" aria-hidden="true">
+          <!-- 钥匙图标（SVG） -->
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path fill="currentColor"
+              d="M7 14a5 5 0 1 1 4.9-6h6.1l2 2-2 2h-2l-1 1h-1l-1 1H12.9A5 5 0 0 1 7 14zm-3-5a3 3 0 1 0 6 0a3 3 0 0 0-6 0z"/>
+          </svg>
+        </span>
+        Generate Password
+      </button>
+
+      <!-- 强度条 -->
+      <div class="strength">
+        <div class="label-row">
+          <span>Password Strength</span>
+          <span id="strengthText" class="level">—</span>
+        </div>
+        <div class="axis">
+          <div id="strengthBar" class="bar"></div>
+        </div>
+      </div>
+
+      <!-- 提示（未勾选时） -->
+      <p id="warn" class="warn" hidden>请至少勾选一种字符类型！</p>
+    </section>
+  </main>
+</body>
+</html>
